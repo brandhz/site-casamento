@@ -147,3 +147,25 @@ function filtrarPrecos(faixa, botao) {
         }
     });
 }
+
+const dataCasamento = new Date("2026-08-01T16:00:00").getTime(); 
+
+const timer = setInterval(function() {
+    const agora = new Date().getTime();
+    const distancia = dataCasamento - agora;
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    // Escreve o resultado no HTML por extenso em português
+    document.getElementById("contagem-regressiva").innerHTML = 
+        dias + " dias, " + horas + " horas, " + minutos + " min e " + segundos + " seg";
+
+    // Quando o tempo acabar, mostra a mensagem
+    if (distancia < 0) {
+        clearInterval(timer);
+        document.getElementById("contagem-regressiva").innerHTML = "É HOJE! CHEGOU A HORA! 🎉";
+    }
+}, 1000);
