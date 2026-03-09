@@ -101,11 +101,12 @@ h1, h2, h3 {
 
 /* Seções Gerais */
 section {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 
 .welcome {
     background-color: var(--white);
+    margin-top: 0px;
 }
 
 .subtitle {
@@ -418,4 +419,15 @@ footer {
            Dica: Se tiver 10 fotos de 300px (largura+margem), use -1500px para um loop perfeito */
         transform: translateX(-1500px); 
     }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.btn-gift {
+  animation: pulse 2s infinite;
+  /* Mantenha o restante da cor e formato do seu botão original aqui */
 }

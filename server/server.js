@@ -38,9 +38,9 @@ app.post('/api/criar-pagamento', async (req, res) => {
                 ],
                 // ATENÇÃO AQUI: Tem que ser 'back_urls' no plural
                 back_urls: {
-                    success: "https://www.google.com", // Coloquei HTTPS para o Mercado Pago aceitar a requisição
-                    failure: "https://www.google.com",
-                    pending: "https://www.google.com"
+                    success: "https://www.brandonnesamira.com.br", // Coloquei HTTPS para o Mercado Pago aceitar a requisição
+                    failure: "https://www.brandonnesamira.com.br",
+                    pending: "https://www.brandonnesamira.com.br"
                 },
                 auto_return: "approved", 
             }
