@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const precoNumerico = parseFloat(precoTexto.replace('R$', '').replace('.', '').replace(',', '.').trim());
 
             try {
-                const resposta = await fetch('http://localhost:3000/api/criar-pagamento', {
+                const resposta = await fetch('https://site-casamento-t7sn.onrender.com/api/criar-pagamento', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
