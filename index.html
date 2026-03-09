@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="public/css/style.css">
 
     <meta property="og:title" content="Casamento de Brandonn & Samira 💍" />
-    <meta property="og:description" content="Acesse nosso site para confirmar sua presença e ver os detalhes do grande dia!" />
+    <meta property="og:description"
+        content="Acesse nosso site para confirmar sua presença e ver os detalhes do grande dia!" />
     <meta property="og:image" content="img/fotonossa.jpeg" />
     <meta property="og:url" content="https://www.brandonnesamiraS.com.br" />
     <meta property="og:type" content="website" />
@@ -31,7 +32,13 @@
         </div>
     </header>
 
-    <iframe data-testid="embed-iframe" style="border-radius: 2px; margin-bottom: 0px;" src="https://open.spotify.com/embed/track/5ra6CI0pEzqjxPEZeBz0d7?utm_source=generator" width="100%" height="132" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <div style="text-align: center; margin: 30px 0;">
+    <button id="btn-play-pause" class="btn-musica-elegante">
+        🎵 Aperte o Play
+    </button>
+    
+    <audio id="player-casamento" src="public/audio/amorefe.mp3" loop></audio>
+    </div>
 
     <section class="welcome">
         <div class="container">
@@ -42,20 +49,20 @@
     </section>
 
     <section class="photo-scroll">
-    <div class="photo-track">
-        <img src="public/img/foto1.jpeg" alt="Nossa Foto 1">
-        <img src="public/img/foto2.jpeg" alt="Nossa Foto 2">
-        <img src="public/img/foto3.jpeg" alt="Nossa Foto 3">
-        <img src="public/img/foto4.jpg" alt="Nossa Foto 4">
-        <img src="public/img/foto5.jpeg" alt="Nossa Foto 5">
+        <div class="photo-track">
+            <img src="public/img/foto1.jpeg" alt="Nossa Foto 1">
+            <img src="public/img/foto2.jpeg" alt="Nossa Foto 2">
+            <img src="public/img/foto3.jpeg" alt="Nossa Foto 3">
+            <img src="public/img/foto4.jpg" alt="Nossa Foto 4">
+            <img src="public/img/foto5.jpeg" alt="Nossa Foto 5">
 
-        <img src="public/img/foto6.jpg" alt="Nossa Foto 6">
-        <img src="public/img/foto7.jpg" alt="Nossa Foto 7">
-        <img src="public/img/foto8.jpg" alt="Nossa Foto 8">
-        <img src="public/img/foto9.jpg" alt="Nossa Foto 9">
-        <img src="public/img/foto10.jpg" alt="Nossa Foto 10">
-    </div>
-</section>
+            <img src="public/img/foto6.jpg" alt="Nossa Foto 6">
+            <img src="public/img/foto7.jpg" alt="Nossa Foto 7">
+            <img src="public/img/foto8.jpg" alt="Nossa Foto 8">
+            <img src="public/img/foto9.jpg" alt="Nossa Foto 9">
+            <img src="public/img/foto10.jpg" alt="Nossa Foto 10">
+        </div>
+    </section>
 
     <section class="banner">
         <div class="banner-content">
@@ -66,8 +73,25 @@
             <p><strong>Horário:</strong> Cerimônia às 16h00 e após cumprimentos aos noivos no local</p>
         </div>
 
-        <div id="contagem-regressiva" style="text-align: center; font-size: 22px; font-weight: bold; margin: 20px 0; color: #333;">
+        <div id="contagem-regressiva"
+            style="text-align: center; font-size: 22px; font-weight: bold; margin: 20px 0; color: #333;">
             Calculando o tempo para o "Sim"...
+        </div>
+
+        <div id="mural-mensagens" style="text-align: center; margin: 40px 0;">
+            <h2>Deixe um recado para os noivos!</h2>
+            <form id="form-recado">
+                <input type="text" id="nome-recado" placeholder="Seu Nome" required
+                    style="margin-bottom: 10px; width: 90%; max-width: 400px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"><br>
+
+                <textarea id="texto-recado" placeholder="Escreva sua mensagem aqui..." required
+                    style="margin-bottom: 10px; width: 90%; max-width: 400px; height: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea><br>
+
+                <button type="submit"
+                    style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                    Enviar Mensagem
+                </button>
+            </form>
         </div>
 
         <section id="rsvp" class="rsvp-section">
@@ -97,7 +121,7 @@
             <div class="container">
                 <h2>Lista de Presentes</h2>
                 <p class="subtitle">Sua presença é o maior presente, mas se quiser nos mimar:</p>
-                
+
 
                 <div class="filter-container">
                     <button class="filter-btn active" onclick="filtrarPrecos('todos', this)">Todos</button>
@@ -114,7 +138,7 @@
 
                 <div style="text-align: center; margin-top: 10px; font-size: 14px; color: #555;">
                     <p>🔒 <b>Ambiente 100% Seguro</b></p>
-                        <p style="font-size: 12px;">Pagamento oficial processado via <b>Mercado Pago</b></p>
+                    <p style="font-size: 12px;">Pagamento oficial processado via <b>Mercado Pago</b></p>
                 </div>
 
                 <div id="lua-de-mel" class="tab-content active">

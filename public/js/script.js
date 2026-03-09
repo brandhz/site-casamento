@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const resposta = await fetch('http://localhost:3000/api/rsvp', {
+                const resposta = await fetch('https://site-casamento-t7sn.onrender.com/api/rsvp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(dados)
@@ -169,3 +169,56 @@ const timer = setInterval(function() {
         document.getElementById("contagem-regressiva").innerHTML = "É HOJE! CHEGOU A HORA! 🎉";
     }
 }, 1000);
+
+// --- MURAL DE MENSAGENS ---
+const formMural = document.getElementById('form-recado');
+if(formMural) {
+    formMural.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const botaoForm = formMural.querySelector('button');
+        const textoOriginal = botaoForm.innerText;
+        botaoForm.innerText = 'Enviando...';
+        botaoForm.disabled = true;
+
+        // Cole a URL do Apps Script aqui dentro das aspas
+        const urlGoogle = 'https://script.google.com/macros/s/AKfycbxAAJQZa60dQpwz5IDbIgqGZoMvIhQT6EbM1wTa0dLFiYjF4nFxDDryOPtLrDsyjweE/exec';
+
+        const formData = new URLSearchParams();
+        formData.append('nome', document.getElementById('nome-recado').value);
+        formData.append('mensagem', document.getElementById('texto-recado').value);
+
+        try {
+            await fetch(urlGoogle, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // Essencial para não dar erro de segurança do Google
+            });
+            showToast('Mensagem enviada com sucesso para os noivos!');
+            formMural.reset();
+        } catch (erro) {
+            console.error(erro);
+            showToast('Erro ao enviar mensagem. Tente novamente.');
+        } finally {
+            botaoForm.innerText = textoOriginal;
+            botaoForm.disabled = false;
+        }
+    });
+}
+
+// --- CONTROLE DO PLAYER DE MÚSICA CUSTOMIZADO ---
+const audioCasamento = document.getElementById('player-casamento');
+const btnMusica = document.getElementById('btn-play-pause');
+
+if (audioCasamento && btnMusica) {
+    btnMusica.addEventListener('click', () => {
+        if (audioCasamento.paused) {
+            audioCasamento.play();
+            btnMusica.innerHTML = '⏸️ Pausar Música';
+            btnMusica.style.backgroundColor = '#27ae60'; // Fica verde quando tá tocando
+        } else {
+            audioCasamento.pause();
+            btnMusica.innerHTML = '🎵 Aperte o Play';
+            btnMusica.style.backgroundColor = '#2c3e50'; // Volta pra cor escura
+        }
+    });
+}
