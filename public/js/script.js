@@ -119,16 +119,13 @@ function abrirTab(evt, nomeTab) {
 }
 
 function filtrarPrecos(faixa, botao) {
-    // 1. Marca o botão clicado como ativo
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     botao.classList.add('active');
 
-    // 2. Pega todos os cards (de todas as abas para garantir)
     const cards = document.querySelectorAll('.gift-card');
 
     cards.forEach(card => {
         const precoTexto = card.querySelector('.price').innerText;
-        // Limpa o texto para pegar só o número
         const valor = parseFloat(precoTexto.replace(/[^\d,]/g, '').replace(',', '.'));
 
         let deveMostrar = false;
@@ -139,7 +136,6 @@ function filtrarPrecos(faixa, botao) {
         else if (faixa === '500-1500' && valor > 500 && valor <= 1500) deveMostrar = true;
         else if (faixa === 'acima-1500' && valor > 1500) deveMostrar = true;
 
-        // 3. Em vez de mexer no .style.display, usamos classList
         if (deveMostrar) {
             card.classList.remove('hidden');
         } else {
@@ -159,11 +155,9 @@ const timer = setInterval(function() {
     const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-    // Escreve o resultado no HTML por extenso em português
     document.getElementById("contagem-regressiva").innerHTML = 
         dias + " dias, " + horas + " horas, " + minutos + " min e " + segundos + " seg";
 
-    // Quando o tempo acabar, mostra a mensagem
     if (distancia < 0) {
         clearInterval(timer);
         document.getElementById("contagem-regressiva").innerHTML = "É HOJE! CHEGOU A HORA! 🎉";
@@ -180,7 +174,6 @@ if(formMural) {
         botaoForm.innerText = 'Enviando...';
         botaoForm.disabled = true;
 
-        // Cole a URL do Apps Script aqui dentro das aspas
         const urlGoogle = 'https://script.google.com/macros/s/AKfycbxAAJQZa60dQpwz5IDbIgqGZoMvIhQT6EbM1wTa0dLFiYjF4nFxDDryOPtLrDsyjweE/exec';
 
         const formData = new URLSearchParams();
@@ -191,7 +184,7 @@ if(formMural) {
             await fetch(urlGoogle, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors' // Essencial para não dar erro de segurança do Google
+                mode: 'no-cors' 
             });
             showToast('Mensagem enviada com sucesso para os noivos!');
             formMural.reset();
@@ -214,11 +207,11 @@ if (audioCasamento && btnMusica) {
         if (audioCasamento.paused) {
             audioCasamento.play();
             btnMusica.innerHTML = '⏸️ Pausar Música';
-            btnMusica.style.backgroundColor = '#27ae60'; // Fica verde quando tá tocando
+            btnMusica.style.backgroundColor = '#27ae60'; 
         } else {
             audioCasamento.pause();
             btnMusica.innerHTML = '🎵 Aperte o Play';
-            btnMusica.style.backgroundColor = '#2c3e50'; // Volta pra cor escura
+            btnMusica.style.backgroundColor = '#2c3e50'; 
         }
     });
 }

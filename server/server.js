@@ -24,7 +24,6 @@ app.post('/api/criar-pagamento', async (req, res) => {
         const preference = new Preference(client);
         
         // Monta o pedido e envia para a API do Mercado Pago
-        // Monta o pedido e envia para a API do Mercado Pago
         const response = await preference.create({
             body: {
                 items: [
@@ -36,9 +35,8 @@ app.post('/api/criar-pagamento', async (req, res) => {
                         currency_id: 'BRL',
                     }
                 ],
-                // ATENÇÃO AQUI: Tem que ser 'back_urls' no plural
                 back_urls: {
-                    success: "https://www.brandonnesamira.com.br", // Coloquei HTTPS para o Mercado Pago aceitar a requisição
+                    success: "https://www.brandonnesamira.com.br",
                     failure: "https://www.brandonnesamira.com.br",
                     pending: "https://www.brandonnesamira.com.br"
                 },
@@ -58,7 +56,7 @@ app.post('/api/criar-pagamento', async (req, res) => {
     }
 });
 
-// --- ROTA DO RSVP (MANTIDA INTACTA) ---
+// --- ROTA DO RSVP ---
 app.post('/api/rsvp', async (req, res) => {
     try {
         const dadosConvidado = req.body;
