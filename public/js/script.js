@@ -155,8 +155,24 @@ const timer = setInterval(function() {
     const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-    document.getElementById("contagem-regressiva").innerHTML = 
-        dias + " dias, " + horas + " horas, " + minutos + " min e " + segundos + " seg";
+    document.getElementById("contagem-regressiva").innerHTML = `
+    <div class="countdown-item">
+        <span class="number">${dias}</span>
+        <span class="label">Dias</span>
+    </div>
+    <div class="countdown-item">
+        <span class="number">${horas}</span>
+        <span class="label">Horas</span>
+    </div>
+    <div class="countdown-item">
+        <span class="number">${minutos}</span>
+        <span class="label">Minutos</span>
+    </div>
+    <div class="countdown-item">
+        <span class="number">${segundos}</span>
+        <span class="label">Segundos</span>
+    </div>
+`;
 
     if (distancia < 0) {
         clearInterval(timer);
