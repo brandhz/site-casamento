@@ -231,3 +231,29 @@ if (audioCasamento && btnMusica) {
         }
     });
 }
+
+// --- SISTEMA DE AMPLIAR FOTOS ---
+const modalFoto = document.getElementById("image-modal");
+const imgAmpliada = document.getElementById("img-ampliada");
+const fecharModal = document.getElementsByClassName("close-modal")[0];
+const fotosCarrossel = document.querySelectorAll(".photo-track img");
+
+// Abre a foto ao clicar
+fotosCarrossel.forEach(foto => {
+    foto.onclick = function() {
+        modalFoto.style.display = "block";
+        imgAmpliada.src = this.src;
+    }
+});
+
+// Fecha ao clicar no "X"
+fecharModal.onclick = function() {
+    modalFoto.style.display = "none";
+}
+
+// Fecha se o cara clicar fora da foto (no fundo preto)
+modalFoto.onclick = function(evento) {
+    if (evento.target !== imgAmpliada) {
+        modalFoto.style.display = "none";
+    }
+}
